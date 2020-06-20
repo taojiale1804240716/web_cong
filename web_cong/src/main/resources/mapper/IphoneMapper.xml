@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--这个上面的配置是版本问题  你现在用的mybatis版本低  -->
+  
+  <mapper namespace="DAO.IphoneDAO">
+    <select id="getByname" resultType="Vo.Iphone" >
+         select * from tiphone where name=#{name}
+    </select> 
+     <select id="SelectAll" resultType="Vo.Iphone">
+         select * from tiphone
+    </select> 
+     <select id="Selectprice" resultType="Vo.Iphone">
+         select * from tiphone where  price&gt;#{price}  order by price
+    </select> 
+    <select id="SelectBrand" resultType="Vo.Iphone">
+         select * from tiphone where Brand like  CONCAT('%',#{Brand},'%') order by price
+    </select> 
+    <select id="Selectmoder" resultType="Vo.Iphone">
+         select * from tiphone where moder like CONCAT('%',#{moder},'%') 
+    </select> 
+   <insert id="insert">
+    insert into tiphone(name,price,img,Brand,moder,numberofcommets,store)
+    values 
+    (#{name},#{price},#{img},#{Brand},#{moder},#{numberofcomments},#{store})
+    </insert>
+   </mapper>
+   
